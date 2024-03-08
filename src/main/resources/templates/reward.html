@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reward Points Summary</title>
+</head>
+<body>
+<h1>Reward Points Summary</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Customer ID</th>
+        <th>Total Reward Points</th>
+        <th>Monthly Reward Points</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="rewardSummary : ${rewardSummaries}">
+        <td th:text="${rewardSummary.customerId}"></td>
+        <td th:text="${rewardSummary.totalRewardPoints}"></td>
+        <td>
+            <ul>
+                <li th:each="monthlyPoints : ${rewardSummary.monthlyRewardPoints}">
+                    <span th:text="${monthlyPoints.month}"></span>: <span th:text="${monthlyPoints.points}"></span>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
